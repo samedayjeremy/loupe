@@ -1,6 +1,7 @@
 .htaccess
 /*
 !wp-content
+!db
 wp-content/uploads/
 wp-content/blogs.dir/
 wp-content/upgrade/

@@ -62,9 +62,6 @@
             }
             $ctr++;
         }
-        
-        
-
     endwhile;
 ?>
 </div>
