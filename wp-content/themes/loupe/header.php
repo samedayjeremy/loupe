@@ -22,21 +22,13 @@
 
 <body <?php body_class(); ?>>
 
-	<div class='left-menu dark'>
-		<a href='/' class='link'>HOME</a>
-		<a href='#' class='link'>SUBSCRIBE</a>
-		<a href="/about" class='link'>ABOUT</a>
-
-		<div id="socialnav" class="">
-			<?php wp_nav_menu(array('theme_location' => 'socialnav', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="social">%3$s</ul>')); ?>
-		</div><!-- #navbar -->
-	</div>
+	
 
 	
 	<div id="page" class="hfeed site">
 	<div class='watch-filters'>
-		<div class='row'>
-			<div>FILTER BY WATCH MANUFACTURER</div>
+		<div class='row manufacturers'>
+			<div class='header'>FILTER BY WATCH MANUFACTURER</div>
 			<?php
 				$manufacturers = get_terms("manufacturer");
 				foreach($manufacturers as $m) {
@@ -46,7 +38,7 @@
 			?>
 		</div>
 		<div class='row'>
-			FILTER BY PRICE RANGE
+			<div class='header'>FILTER BY PRICE RANGE</div>
 			<?php
 				$prices = get_terms("price");
 				foreach($prices as $p) {
@@ -59,6 +51,16 @@
 			<a href='#'>FILTER RESULTS</a>
 		</div>
 	</div>
+
+	<div class='left-menu dark'>
+		<a href='/' class='link'>HOME</a>
+		<a href='#' class='link'>SUBSCRIBE</a>
+		<a href="/about" class='link'>ABOUT</a>
+
+		<div id="socialnav" class="">
+			<?php wp_nav_menu(array('theme_location' => 'socialnav', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="social">%3$s</ul>')); ?>
+		</div><!-- #navbar -->
+	</div>
 		<header id="masthead" class="site-header row dark" role="banner">
 			<div class="col-md-1" id="navbtn" data-target="#subnav"></div>
 			<div class='col-md-8'>
@@ -68,6 +70,7 @@
 			</div>
 			<div class='col-md-1 col-xs-4 sign-up'>Sign Up</div>
 			<div class='col-md-1 col-xs-4 filter'>Filter</div>
+			<div id='search-box' class=''><?php get_search_form(true); ?></div>
 			<div class='col-md-1 col-xs-4 search'>Search</div>
 		</header><!-- #masthead -->
 

@@ -11,13 +11,14 @@
             <?php
                 $gallery = get_field("gallery");
                 if($gallery) {
+                
                     $first_pic = $gallery[0];
-                    echo "<img src='".$first_pic['sizes']['large']."' alt='".$first_pic['alt']."' class='first-pic' />";
+                    echo "<img src='".$first_pic['sizes']['singleimage']."' alt='".$first_pic['alt']."' class='first-pic' />";
                     echo "<div class='thumbs'>";
                         $ctr = 0;
                         foreach($gallery as $p) {
                             $active = $ctr === 0 ? "active" : "";
-                            echo "<img src='".$p['sizes']['thumbnail']."' data-big-img='".$p['sizes']['large']."' class='thumb thumb-img $active' />";
+                            echo "<img src='".$p['sizes']['thumbnail']."' data-big-img='".$p['sizes']['singleimage']."' class='thumb thumb-img $active' />";
                             $ctr++;
                         }
                         while ($ctr < 7) {
@@ -35,33 +36,35 @@
                 <?php
                     $price = get_field("price");
                     $formatted_price = number_format($price, 0, ",", ",");
-                    echo "<span class='price'>$".$formatted_price."</span>";
-                    $buy_link = get_field("buy_link");
-                    if($buy_link) {
-                        echo "<a href='$buy_link' class='buy-link' target='_blank'>Buy It Here</a>";
-                    }
+                    echo "<div class='link-price'>";
+                        echo "<span class='price'>$".$formatted_price."</span>";
+                        $buy_link = get_field("buy_link");
+                        if($buy_link) {
+                            echo "<a href='$buy_link' class='buy-link' target='_blank'>Buy It Here</a>";
+                        }
+                    echo "</div>";
                 ?>
             </div>
         </div>
         <div class='row facts'>
-            <div class="col-md-5ths dark tax">
-                Make
+            <div class="col-md-5ths col-xs-12 dark tax">
+                <div class='header'>Make</div>
                 <?php print_tax_terms($post, "manufacturer"); ?>
             </div>
-            <div class="col-md-5ths dark tax">
-                Model
+            <div class="col-md-5ths col-xs-12 dark tax">
+                <div class='header'>Model</div>
                 <?php print_tax_terms($post, "model"); ?>
             </div>
-            <div class="col-md-5ths dark tax">
-                Year
+            <div class="col-md-5ths col-xs-12 dark tax">
+                <div class='header'>Year</div>
                 <?php print_tax_terms($post, "year-manufactured"); ?>
             </div>
-            <div class="col-md-5ths dark tax">
-                Style
+            <div class="col-md-5ths col-xs-12 dark tax">
+                <div class='header'>Style</div>
                 <?php print_tax_terms($post, "style"); ?>
             </div>
-            <div class="col-md-5ths dark tax">
-                Price
+            <div class="col-md-5ths col-xs-12 dark tax">
+                <div class='header'>Price</div>
                 <?php print_tax_terms($post, "price"); ?>
             </div>
         </div>

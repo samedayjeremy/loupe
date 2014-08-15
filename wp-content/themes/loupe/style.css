@@ -12,9 +12,21 @@ Theme Name: Bring A Loupe
     src: url("fonts/GeorgiaPro/GeorgiaPro-LightItalic.otf") format("opentype");
 }
 
+@font-face {
+    font-family: MissionGothic;
+    src: url("fonts/MissionGothic/MissionGothicRegular.otf") format("opentype");
+}
+
+@font-face {
+    font-family: MissionGothicLight;
+    src: url("fonts/MissionGothic/MissionGothicLight.otf") format("opentype");
+}
+
 body {
     background-color: #343434;
     color: #8f8f8f;
+    font-family: MissionGothicLight, sans-serif;
+    font-size: 15px;
 }
 
 .dark {
@@ -27,7 +39,7 @@ h1 {
     font-family: GeorgiaProLightItalic, Serif;
     
 }
-h2 {
+h2, .price {
     text-transform: uppercase;
     font-size: 16px;
     font-family: GeorgiaProLightItalic, Serif;
@@ -59,28 +71,53 @@ img {
     /*float: left;*/
     min-width: 84px;
     opacity: 1;
-    background: transparent url("images/hamburger.png") no-repeat center center;
+    background: #1b1b1b url("images/hamburger.png") no-repeat center center;
     /*display: block;*/
     margin-left: 15px;
 }
 #navbtn a:hover {
     
 }
+.load-more {
+    margin: 80px auto;
+    height: 77px;
+    width: 100%;
+    cursor: pointer;
+}
+.load-more a {
+    background: transparent url("images/loadmore.png") no-repeat center center;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#infscr-loading img {
+    width: 52px;
+    height: auto;
+    /*margin: 80px auto;*/
+    margin-bottom: 80px;
+    margin-top: 80px;
+    
+}
+#infscr-loading {
+    text-align: center;
+}
 
 .site-header {
     min-height: 60px;
     position: relative;
+    overflow: hidden;
 }
 
 #masthead .search {
     margin-right: -15px;
 }
 #masthead .col-md-1, #masthead .col-md-8 {
-    border-right: 1px solid #343434;
+    border-right: 1px solid #7e7e7e;
     height: 60px;
 }
 #masthead .col-md-1:hover {
-    background-color: #343434;
+    background-color: #7e7e7e;
     cursor: pointer;
 }
 
@@ -88,13 +125,30 @@ img {
     background: transparent url("images/signup.png") no-repeat center center;
     text-indent: -9999px;
 }
+#masthead .sign-up.over {
+    background: #7e7e7e url("images/signup-over.png") no-repeat center center;
+}
+
 #masthead .search {
     background: transparent url("images/search.png") no-repeat center center;
     text-indent: -9999px;
 }
+#masthead .search.over {
+    background: #7e7e7e url("images/search-over.png") no-repeat center center;
+}
+
 #masthead .filter {
     background: transparent url("images/filter.png") no-repeat center center;
     text-indent: -9999px;
+}
+#masthead .filter.over {
+    background: #7e7e7e url("images/filter-over.png") no-repeat center center;
+}
+
+#search-box {
+    position: absolute;
+    right: -220px;
+    width: 220px;
 }
 
 .home-link {
@@ -109,12 +163,23 @@ img {
     margin-top: 10px !important;
 }
 
+.page-content {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
 
 .first .col-md-6 {
     padding-left: 0px;
 }
 .first .col-md-6.info {
     padding-top: 60px;
+    padding-left: 20px;
+    padding-bottom: 30px;
+}
+.link-price {
+    padding-top: 30px;
 }
 
 .post-date {
@@ -165,6 +230,14 @@ img {
     padding: 7px;
 }
 
+.filter-submit {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.buy-link {
+    margin-left: 20px;
+}
 
 .thumbs {
     height: 12.5%;
@@ -182,16 +255,32 @@ img {
 }
 
 .facts {
-    height: 80px;
+    min-height: 80px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    overflow: hidden;
+    padding-bottom: 15px;    
 }
 .facts div {
     height: 100%;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 
+.tax {
+    margin-bottom: -999999px;
+    padding-bottom: 999999px;
+}
+.tax .header {
+    font-size: 11px;
+    font-family: MissionGothic;
+    text-transform: uppercase;
+}
 .tax-term {
     background-color: #343434;
     padding: 2px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    float: left;
 }
 
 .row-no-padding {
@@ -208,6 +297,7 @@ img {
     z-index: 999;
     height: 100%;
     padding-left: 15px;
+    padding-top: 12px;
 }
 .left-menu .link {
     padding-top: 10px;
@@ -219,6 +309,7 @@ ul.social {
     list-style: none;
     margin: 0;
     padding: 0;
+    padding-top: 10px;
 }
 ul.social li {
     display: inline-block;
@@ -227,32 +318,53 @@ ul.social li a:link, ul.social li a:visited {
     display: inline-block;
     width: 40px;
     height: 40px;
-    margin: 0 .5em;
+    margin-right: 10px;
     text-indent: -999em;
     overflow: hidden;
     background-color: transparent;
     background-repeat: no-repeat;
+    background-image: url("images/social.png");
 }
 ul.social li a:link:hover, ul.social li a:visited:hover {
     opacity: .7;
 }
 ul.social li.twitter a {
-    background-image: url("images/twitter.png");
+    background-position: 0 0;
 }
 ul.social li.instagram a {
-    background-image: url("images/instagram.png");
+    background-position: -94px 0;
 }
 ul.social li.facebook a {
-    background-image: url("images/facebook.png");
+    background-position: -46px 0;
 }
 ul.social li.tumblr a {
-    background-image: url("images/tumblr.png");
+    background-position: -140px 0;
+}
+
+.watch-filters {
+    /*display: none;*/
+    padding: 20px;
+    background-color: #7e7e7e;
+}
+.watch-filters .row {
+    margin: 0px;
+}
+
+.watch-filters .row.manufacturers {
+    margin-bottom: 20px;
+}
+
+.watch-filters .header {
+    font-family: MissionGothic;
+    font-size: 11px;
+    color: #1a1a1a;
 }
 
 .site-footer {
     text-align: center;
     padding-top: 80px;
     padding-bottom: 100px;
+    margin-top: 10px;
 }
 
 .site-footer img {

@@ -7,6 +7,23 @@ function theme_setup() {
 }
 add_action( 'after_setup_theme', 'theme_setup' );
 
+
+//Define custom image sizes here
+//REFERENCE: https://codex.wordpress.org/Function_Reference/add_image_size
+function image_sizes() {
+    add_image_size('square300', 300, 300, true);
+    add_image_size('bigimage', 0, 450, false);
+    add_image_size('singleimage', 0, 560, false);
+
+
+    ///add_image_size('slider', 1300, 1000, true);
+    //add_image_size('magnified', 1300, 1000, false);
+    //add_image_size('detail', 600, 500, false);
+    //add_image_size('list-grid', 400, 400, false);
+}
+
+add_action('init', 'image_sizes', 0);
+
 function custom_post_type_init() {
     $post_types = array(
         array("slug" => "watch", "plural" => "Watches", "singular" => "Watch", "rewrite" => "watch", "public" => true, "archive" => true, "supports" => array('title', 'editor'), "taxonomies"=>array())
@@ -99,4 +116,11 @@ function print_tax_terms($post, $tax) {
         echo "</div>";
     }
 }
+
+// Replaces the excerpt "more" text by a link
+function new_excerpt_more($more) {
+       global $post;
+	return "...";
+}
+add_filter('excerpt_more', 'new_excerpt_more');
 ?>
