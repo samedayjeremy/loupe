@@ -342,7 +342,7 @@ ul.social li.tumblr a {
 }
 
 .watch-filters {
-    /*display: none;*/
+    display: none;
     padding: 20px;
     background-color: #7e7e7e;
 }

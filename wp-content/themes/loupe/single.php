@@ -35,9 +35,13 @@
                 <?php the_content(); ?>
                 <?php
                     $price = get_field("price");
-                    $formatted_price = number_format($price, 0, ",", ",");
+                    if($price) {
+                        $formatted_price = "$" . number_format($price, 0, ",", ",");
+                    } else {
+                        $formatted_price = "Inquire for Price";
+                    }
                     echo "<div class='link-price'>";
-                        echo "<span class='price'>$".$formatted_price."</span>";
+                        echo "<span class='price'>$formatted_price</span>";
                         $buy_link = get_field("buy_link");
                         if($buy_link) {
                             echo "<a href='$buy_link' class='buy-link' target='_blank'>Buy It Here</a>";
