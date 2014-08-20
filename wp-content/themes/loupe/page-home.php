@@ -27,9 +27,27 @@
     var_dump($total_posts->found_posts);
     echo "<script>var total_pages= ".ceil($total_posts->found_posts / 8.0).";</script>";*/
     $args = array_merge($wp_args, array( 'post_type' => 'watch', "posts_per_page"=>$ppp, "paged"=>$paged, "page_id"=>null, "p"=>null));
+
+    if(isset($_GET['manufacturer'])) {// || isset($_GET['price']) {
+        //print_r($_GET['manufacturer']);
+        $manufacturers = explode(",", $_GET['manufacturer']);
+        //$args['manufacturer'] = $manufacturers;
+        $args['tax_query'] = array(
+        'relation' => 'OR',
+            array(
+                'taxonomy' => 'manufacturer',
+                'terms' => $manufacturers,
+                'field' => 'slug',
+            )/*,
+        array(
+            'taxonomy' => 'dairy',
+            'terms' => array('yogurt'),
+            'field' => 'slug',
+        )*/
+        );
+    }
     query_posts( $args );
-    
-   //print_r($args);
+    print_r($args);
     if ( have_posts() ) :
     echo "<div class='watch-content'>";
 
@@ -40,7 +58,7 @@
             $first = false;
             ?>
             <div class='row first dark watch-set'>
-                <div class='col-md-6'><a href='<?php the_permalink(); ?>'><?php the_post_thumbnail("bigimage"); ?></a></div>
+                <div class='col-md-6'><a href='<?php the_permalink(); ?>' class='first-pic'><?php the_post_thumbnail("bigimage"); ?></a></div>
                 <div class='col-md-6 info'>
 
                     <?php post_date(); ?>

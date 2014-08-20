@@ -13,7 +13,9 @@
                 if($gallery) {
                 
                     $first_pic = $gallery[0];
-                    echo "<img src='".$first_pic['sizes']['singleimage']."' alt='".$first_pic['alt']."' class='first-pic' />";
+                    echo "<div class='carousel-wrap'>";
+                        echo "<img src='".$first_pic['sizes']['singleimage']."' alt='".$first_pic['alt']."' class='first-pic' />";
+                    echo "</div>";
                     echo "<div class='thumbs'>";
                         $ctr = 0;
                         foreach($gallery as $p) {

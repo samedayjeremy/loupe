@@ -1,4 +1,55 @@
+
+
 $(document).ready(function() {
+    
+    $(".watch-filters .manufacturers .term").click(function() {
+        var this_term = $(this).attr("data-slug");
+        if($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            for(var i = filter_search['manufacturers'].length - 1; i >= 0; i--) {
+                if(filter_search['manufacturers'][i] === this_term) {
+                   filter_search['manufacturers'].splice(i, 1);
+                }
+            }
+        } else {
+            $(this).addClass("active");
+            filter_search['manufacturers'].push(this_term);
+        }  
+    });
+
+    $(".watch-filters .prices .term").click(function() {
+        var this_term = $(this).attr("data-slug");
+        if($(this).hasClass("active")) {
+            $(this).removeClass("active");
+            for(var i = filter_search['prices'].length - 1; i >= 0; i--) {
+                if(filter_search['prices'][i] === this_term) {
+                   filter_search['prices'].splice(i, 1);
+                }
+            }
+        } else {
+            $(this).addClass("active");
+            filter_search['prices'].push(this_term);
+        }  
+    });
+
+    $(".filter-submit a").click(function() {
+        var url = "/";
+        var has_manufacturers = false;
+        if (filter_search['manufacturers'].length > 0 ) {
+            url += "?manufacturer=" + filter_search["manufacturers"].join(",");
+            var has_manufacturers = true;
+        }
+        if(filter_search['prices'].length > 0) {
+            if(has_manufacturers) {
+                url += "&"
+            } else {
+                url += "?"
+            }
+            url += "price=" + filter_search['prices'].join(",");
+        }
+        window.location.href = url;
+    });
+
     $(".load-more").click(function() {
         $(".load-more").hide();
     });

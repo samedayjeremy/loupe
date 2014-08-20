@@ -182,6 +182,13 @@ img {
     padding-top: 30px;
 }
 
+.single .carousel-wrap {
+    text-align: center;
+}
+.first .first-pic {
+    width: auto;
+}
+
 .post-date {
     border: 1px solid #aaaaaa;
     border-radius: 50px;
@@ -348,6 +355,10 @@ ul.social li.tumblr a {
 }
 .watch-filters .row {
     margin: 0px;
+}
+
+.watch-filters .term.active {
+    color: red;
 }
 
 .watch-filters .row.manufacturers {

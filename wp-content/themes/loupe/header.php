@@ -22,8 +22,24 @@
 
 <body <?php body_class(); ?>>
 
-	
+<?php
+	$manufacturers_filter = array();
+	if(isset($_GET['manufacturer'])) {        
+        $manufacturers_filter = explode(",", $_GET['manufacturer']);
+	}
 
+	$prices_filter = array();
+	if(isset($_GET['price'])) {        
+        $prices_filter = explode(",", $_GET['price']);
+	}
+
+	$filter_search = array("manufacturers"=>$manufacturers_filter, "prices"=>$prices_filter);
+
+?>
+	<script>
+	var filter_search = <?php echo json_encode($filter_search); ?>;
+	</script>
+	//var filter_search = {"manufacturers": [], "prices": []};
 	
 	<div id="page" class="hfeed site">
 	<div class='watch-filters'>
@@ -32,18 +48,26 @@
 			<?php
 				$manufacturers = get_terms("manufacturer");
 				foreach($manufacturers as $m) {
-					$url = "/?manufacturer=".$m->slug;
-					echo "<div class='col-md-9ths'><a href='$url' class='term'>".$m->name."</a></div>";
+					//$url = "/?manufacturer=".$m->slug;
+					$class = "";
+					if(in_array($m->slug, $manufacturers_filter)) {
+						$class = " active";
+					}
+					echo "<div class='col-md-9ths'><a href='#' class='term$class' data-slug='".$m->slug."'>".$m->name."</a></div>";
 				}
 			?>
 		</div>
-		<div class='row'>
+		<div class='row prices'>
 			<div class='header'>FILTER BY PRICE RANGE</div>
 			<?php
 				$prices = get_terms("price");
 				foreach($prices as $p) {
-					$url = "/?price=".$p->slug;
-					echo "<a href='$url' class='term'>".$p->name."</a>";
+					//$url = "/?price=".$p->slug;
+					$class = "";
+					if(in_array($p->slug, $prices_filter)) {
+						$class = " active";
+					}
+					echo "<a href='#' class='term$class' data-slug='".$p->slug."'>".$p->name."</a>";
 				}
 			?>
 		</div>
