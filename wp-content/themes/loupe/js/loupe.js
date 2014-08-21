@@ -2,7 +2,7 @@
 
 $(document).ready(function() {
     
-    $(".watch-filters .manufacturers .term").click(function() {
+    $(".watch-filters .manufacturers .term-wrapper").click(function() {
         var this_term = $(this).attr("data-slug");
         if($(this).hasClass("active")) {
             $(this).removeClass("active");
@@ -17,7 +17,7 @@ $(document).ready(function() {
         }  
     });
 
-    $(".watch-filters .prices .term").click(function() {
+    $(".watch-filters .prices .term-wrapper").click(function() {
         var this_term = $(this).attr("data-slug");
         if($(this).hasClass("active")) {
             $(this).removeClass("active");

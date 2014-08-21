@@ -37,9 +37,8 @@
 
 ?>
 	<script>
-	var filter_search = <?php echo json_encode($filter_search); ?>;
+		var filter_search = <?php echo json_encode($filter_search); ?>;
 	</script>
-	//var filter_search = {"manufacturers": [], "prices": []};
 	
 	<div id="page" class="hfeed site">
 	<div class='watch-filters'>
@@ -53,7 +52,7 @@
 					if(in_array($m->slug, $manufacturers_filter)) {
 						$class = " active";
 					}
-					echo "<div class='col-md-9ths'><a href='#' class='term$class' data-slug='".$m->slug."'>".$m->name."</a></div>";
+					echo "<div class='col-md-9ths term-wrapper$class' data-slug='".$m->slug."'><span class='toggle'></span><a href='#' class='term'>".$m->name."</a></div>";
 				}
 			?>
 		</div>
@@ -67,7 +66,7 @@
 					if(in_array($p->slug, $prices_filter)) {
 						$class = " active";
 					}
-					echo "<a href='#' class='term$class' data-slug='".$p->slug."'>".$p->name."</a>";
+					echo "<div class='col-md-9ths term-wrapper$class' data-slug='".$p->slug."'><span class='toggle'></span><a href='#' class='term'>".$p->name."</a></div>";
 				}
 			?>
 		</div>

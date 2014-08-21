@@ -357,8 +357,23 @@ ul.social li.tumblr a {
     margin: 0px;
 }
 
-.watch-filters .term.active {
-    color: red;
+.watch-filters .term-wrapper a:hover {
+    color: white;
+}
+
+.watch-filters .term-wrapper .toggle {
+    border-radius: 50%;
+    background-color: transparent;
+    width: 10px;
+    height: 10px;
+    border: 1px solid white;
+    display: inline-block;
+    margin-right: 7px;
+}
+
+.watch-filters .term-wrapper.active .toggle {
+    box-shadow: 1px 1px #7e7e7e inset;
+    background-color: white;
 }
 
 .watch-filters .row.manufacturers {

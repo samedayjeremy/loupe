@@ -47,7 +47,7 @@
         );
     }
     query_posts( $args );
-    print_r($args);
+    //print_r($args);
     if ( have_posts() ) :
     echo "<div class='watch-content'>";
 
