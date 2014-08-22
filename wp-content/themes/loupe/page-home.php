@@ -28,8 +28,12 @@
     echo "<script>var total_pages= ".ceil($total_posts->found_posts / 8.0).";</script>";*/
     $args = array_merge($wp_args, array( 'post_type' => 'watch', "posts_per_page"=>$ppp, "paged"=>$paged, "page_id"=>null, "p"=>null));
 
-    if(isset($_GET['manufacturer'])) {// || isset($_GET['price']) {
+    if(isset($_GET['manufacturer']) || isset($_GET['price'])) {
         //print_r($_GET['manufacturer']);
+        $manufacturers = array();
+        $prices = array();
+        if(isset($_GET['manufacturer'])) { $manufacturers = explode(",", $_GET['manufacturer']); }
+        if(isset($_GET['price'])) { $prices = explode(",", $_GET['price']); }
         $manufacturers = explode(",", $_GET['manufacturer']);
         //$args['manufacturer'] = $manufacturers;
         $args['tax_query'] = array(
@@ -38,16 +42,17 @@
                 'taxonomy' => 'manufacturer',
                 'terms' => $manufacturers,
                 'field' => 'slug',
-            )/*,
-        array(
-            'taxonomy' => 'dairy',
-            'terms' => array('yogurt'),
-            'field' => 'slug',
-        )*/
+            ),
+            array(
+                'taxonomy' => 'price',
+                'terms' => $prices,
+                'field' => 'slug',
+            )
         );
     }
+
     query_posts( $args );
-    //print_r($args);
+    print_r($args['tax_query']);
     if ( have_posts() ) :
     echo "<div class='watch-content'>";
 
