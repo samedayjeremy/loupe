@@ -52,7 +52,7 @@
     }
 
     query_posts( $args );
-    print_r($args['tax_query']);
+    //print_r($args['tax_query']);
     if ( have_posts() ) :
     echo "<div class='watch-content'>";
 
