@@ -58,7 +58,7 @@
             $first = false;
             ?>
             <div class='row first dark watch-set'>
-                <div class='col-md-6'><a href='<?php the_permalink(); ?>' class='first-pic'><?php the_post_thumbnail("bigimage"); ?></a></div>
+                <div class='col-md-6'><div class='carousel-wrap'><a href='<?php the_permalink(); ?>' class='first-pic'><?php the_post_thumbnail("singleimage"); ?></a></div></div>
                 <div class='col-md-6 info'>
 
                     <?php post_date(); ?>

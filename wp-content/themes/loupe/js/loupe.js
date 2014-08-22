@@ -2,6 +2,8 @@
 
 $(document).ready(function() {
     
+    $('.fancybox').fancybox();
+
     $(".watch-filters .manufacturers .term-wrapper").click(function() {
         var this_term = $(this).attr("data-slug");
         if($(this).hasClass("active")) {
@@ -138,4 +140,12 @@ console.log(search_width);
          $(this).removeClass("over");
     }
     );
+
+    $("#searchsubmit").click(function(e) {
+        
+        if($(".searchform #s").val() == "") {
+            e.preventDefault();
+            return false;
+        }
+    });
 });

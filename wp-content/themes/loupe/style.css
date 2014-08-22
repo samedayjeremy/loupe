@@ -149,7 +149,22 @@ img {
     position: absolute;
     right: -220px;
     width: 220px;
+    z-index: 9999;
+    margin-right: 8px;
 }
+
+
+.searchform {
+    height: 60px;
+    background-color: #1b1b1b;
+}
+.searchform input {
+    border: none;
+    height: 38px;
+    margin-top: 11px;
+    color: #1b1b1b;
+}
+
 
 .home-link {
     text-indent: -999999px;
@@ -182,10 +197,10 @@ img {
     padding-top: 30px;
 }
 
-.single .carousel-wrap {
+.carousel-wrap {
     text-align: center;
 }
-.first .first-pic {
+.first .first-pic, .first-pic img {
     width: auto;
 }
 
@@ -203,16 +218,22 @@ img {
     padding-top: 3px;
 }
 
+.watch-set {
+    margin-bottom: 10px;
+}
 .watch-box {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin: 0 auto;
     /*margin-right: 10px;*/
     text-align: center;
 }
-.watch-box:last-child {
-    margin-right: 0px;
+/*.watch-box:first-child {
+    padding-left: 0px;
 }
+.watch-box:last-child {
+    padding-right: 0px;
+}*/
 
 .watch-box .post-date {
     margin: 0 auto;
@@ -231,15 +252,21 @@ img {
     vertical-align: middle;
     line-height: normal;
 }
-.buy-link, .filter-submit a {
+.buy-link, .filter-submit a, .searchform #searchsubmit {
     font-family: GeorgiaProLightItalic;
     border: 1px solid white;
     padding: 7px;
+    background-color: #1b1b1b;
+    color: white;
 }
 
 .filter-submit {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.filter-submit a {
+    background-color: transparent;
 }
 
 .buy-link {

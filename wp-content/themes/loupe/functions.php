@@ -13,7 +13,7 @@ add_action( 'after_setup_theme', 'theme_setup' );
 function image_sizes() {
     add_image_size('square300', 300, 300, true);
     add_image_size('bigimage', 0, 450, false);
-    add_image_size('singleimage', 560, 560, false);
+    add_image_size('singleimage', 450, 450, false);
 
 
     ///add_image_size('slider', 1300, 1000, true);

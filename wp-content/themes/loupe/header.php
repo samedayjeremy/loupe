@@ -11,11 +11,12 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php echo bloginfo("name"); wp_title( '|', true, 'left' ); ?></title>
 	    
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap-theme.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/style.css" media="screen" />
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 	
 	<?php wp_head(); ?>
 </head>
@@ -77,13 +78,18 @@
 
 	<div class='left-menu dark'>
 		<a href='/' class='link'>HOME</a>
-		<a href='#' class='link'>SUBSCRIBE</a>
+		<a class='link fancybox' href="#mc_embed_signup">SUBSCRIBE</a>
 		<a href="/about" class='link'>ABOUT</a>
+
+
 
 		<div id="socialnav" class="">
 			<?php wp_nav_menu(array('theme_location' => 'socialnav', 'menu_class' => 'navbar-nav', 'container' => false, 'items_wrap' => '<ul class="social">%3$s</ul>')); ?>
 		</div><!-- #navbar -->
 	</div>
+
+
+
 		<header id="masthead" class="site-header row dark" role="banner">
 			<div class="col-md-1" id="navbtn" data-target="#subnav"></div>
 			<div class='col-md-8'>
@@ -91,7 +97,7 @@
 					<h1 class="site-title"><?php bloginfo( 'name' ); ?></h1>
 				</a>
 			</div>
-			<div class='col-md-1 col-xs-4 sign-up'>Sign Up</div>
+			<div class='col-md-1 col-xs-4 sign-up fancybox' href="#mc_embed_signup">Sign Up</div>
 			<div class='col-md-1 col-xs-4 filter'>Filter</div>
 			<div id='search-box' class=''><?php get_search_form(true); ?></div>
 			<div class='col-md-1 col-xs-4 search'>Search</div>

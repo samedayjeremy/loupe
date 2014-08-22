@@ -74,6 +74,45 @@
                 <?php print_tax_terms($post, "price"); ?>
             </div>
         </div>
+    <div class='row related'>
+        <?php
+            $manufacturers = wp_get_post_terms($post->ID, 'manufacturer', array("fields" => "slugs"));
+            //print_r($manufacturers);
+            $related_watches = array();
+            if($manufacturers) {
+                $related_watches = get_posts(array("post_type"=>"watch", "posts_per_page"=>4, 'post__not_in' => array($post->ID), 'tax_query' => array(
+                'relation' => 'OR',
+                    array(
+                        'taxonomy' => 'manufacturer',
+                        'terms' => $manufacturers,
+                        'field' => 'slug',
+                    ))));
+            }
+            if(count($related_watches) == 0) {
+                $related_watches = get_posts(array("post_type"=>"watch", "posts_per_page"=>4, 'post__not_in' => array($post->ID)));
+            }
+            if($related_watches) {
+                echo "<div class='row watch-set'>";
+                    foreach($related_watches as $post) {
+                        setup_postdata($post);
+                        ?>
+                        <div class='col-md-3 dark watch-box'>
+                            <a href='<?php the_permalink(); ?>'>
+                                <?php the_post_thumbnail("square300"); ?>
+                                <div class='date-title'>
+                                    <?php post_date(); ?>
+                                    <div class='title-wrapper'>
+                                        <h2><?php the_title(); ?></h2>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php
+                    }
+                echo "</div>";
+            }
+        ?>
+    </div>
         
             <?php
     endwhile;
